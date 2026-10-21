@@ -1,0 +1,44 @@
+{
+  "name": "vita-lens",
+  "version": "0.1.0",
+  "private": true,
+  "description": "VITA Lens: plataforma de análise de renovações de hardware, licenças, assinaturas e suporte (protótipo).",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:generate": "drizzle-kit generate",
+    "db:reset": "node scripts/reset-db.mjs"
+  },
+  "engines": {
+    "node": ">=20.9"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.11",
+    "@fontsource/figtree": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "drizzle-orm": "^0.45.4",
+    "exceljs": "^4.4.0",
+    "next": "^16.4.2",
+    "papaparse": "^5.7.0",
+    "pg": "^8.23.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.20.5",
+    "@types/papaparse": "^5.5.2",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "drizzle-kit": "^0.31.11",
+    "postcss": "^8.5.31",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~5.9",
+    "vitest": "^5.0.5"
+  }
+}

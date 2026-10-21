@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+/*
+ * VITA Lens: tokens de marca.
+ * Roxos da Vivo (marca da Telefônica Brasil) para estrutura e ações.
+ * Azul, marinho e branco-lavanda da Telefônica para informação e leitura.
+ */
+@theme {
+  --color-plum: #400056;
+  --color-plum-800: #52006e;
+  --color-vivo: #6e00a7;
+  --color-vivo-700: #5a0089;
+  --color-vivo-50: #f4e9fb;
+  --color-helio: #d84aff;
+  --color-tblue: #0066ff;
+  --color-tblue-50: #e8f0ff;
+  --color-navy: #031a34;
+  --color-mist: #f3f4ff;
+  --color-line: #dcdcef;
+  --color-line-strong: #c3c3df;
+  --color-muted: #4b5570;
+  --color-faint: #6f7790;
+
+  --color-ok: #0d7a4e;
+  --color-ok-bg: #e4f4ec;
+  --color-warn: #9a5400;
+  --color-warn-bg: #fff1dc;
+  --color-crit: #c0262d;
+  --color-crit-bg: #fde8e9;
+  --color-opp: #0052cc;
+  --color-opp-bg: #e6eeff;
+  --color-info: #555e75;
+  --color-info-bg: #eceef5;
+
+  --font-sans: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
+}
+
+html {
+  color-scheme: light;
+}
+body {
+  background: var(--color-mist);
+  color: var(--color-navy);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-helio);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Itens de grid não crescem além da coluna por causa de tabelas largas. */
+.grid > * {
+  min-width: 0;
+}
+
+@layer components {
+  .panel {
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+  }
+  .h-page {
+    font-size: 1.75rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .h-section {
+    font-size: 1.125rem;
+    line-height: 1.3;
+    font-weight: 700;
+  }
+  .h-sub {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+  .lead {
+    color: var(--color-muted);
+    max-width: 68ch;
+  }
+  .sku {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: -0.01em;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    min-height: 2.25rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .btn-primary {
+    background: var(--color-vivo);
+    color: #fff;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--color-vivo-700);
+  }
+  .btn-secondary {
+    background: #fff;
+    color: var(--color-vivo);
+    border-color: var(--color-line-strong);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    border-color: var(--color-vivo);
+  }
+  .btn-quiet {
+    background: transparent;
+    color: var(--color-muted);
+    padding-inline: 0.5rem;
+    min-height: 2rem;
+    font-weight: 600;
+  }
+  .btn-quiet:hover:not(:disabled) {
+    color: var(--color-vivo);
+    background: var(--color-vivo-50);
+  }
+  .btn-sm {
+    min-height: 1.9rem;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.82rem;
+  }
+
+  .field {
+    display: grid;
+    gap: 0.3rem;
+  }
+  .label {
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .hint {
+    font-size: 0.8rem;
+    color: var(--color-faint);
+  }
+  .input,
+  .select,
+  .textarea {
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 6px;
+    padding: 0.45rem 0.6rem;
+    font: inherit;
+    font-size: 0.9rem;
+    color: var(--color-navy);
+  }
+  .input:focus,
+  .select:focus,
+  .textarea:focus {
+    border-color: var(--color-vivo);
+    outline: 2px solid color-mix(in srgb, var(--color-helio) 45%, transparent);
+    outline-offset: 0;
+  }
+  .textarea {
+    min-height: 8rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.08rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  .table th {
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid var(--color-line-strong);
+    background: #fafaff;
+    position: sticky;
+    top: 0;
+  }
+  .table td {
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid var(--color-line);
+    vertical-align: top;
+  }
+  .table tr:last-child td {
+    border-bottom: 0;
+  }
+  .table .right {
+    text-align: right;
+  }
+
+  .link {
+    color: var(--color-tblue);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .link:hover {
+    color: var(--color-navy);
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    font-size: 11pt;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-full {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+  .panel {
+    border-color: #ccc;
+    break-inside: avoid;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
